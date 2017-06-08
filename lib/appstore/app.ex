@@ -4,7 +4,7 @@ defmodule AppStore.App do
   defp parser_response({:ok, %HTTPoison.Response{body: body, status_code: 200}}) do
     data = body |> Poison.decode! 
     try do
-      results = data["results"]
+      results = List.first(data["results"])
       {:ok, results}
     rescue 
       _ -> :error
