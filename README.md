@@ -27,12 +27,13 @@ Handles API calls directly related to an application.
 Retrieves the full detail of an application. Options:
 
 - `bundleId`: the Itunes bundleId. This parameter must be provided. 
-- `country`: the two letter country code to get the list from. Defaults to `us`.
+- `country`: the two letter country code to get the app from. Defaults to `us`.
 
 Example: 
 
 ```elixir
 {:ok, app} = AppStore.App.get_details "com.midasplayer.apps.candycrushsaga"
+
 app["sellerName"] 
 #"King.com Limitied"
 ```
@@ -40,6 +41,6 @@ app["sellerName"]
 ## Contributing
 
 This module is quite new, and there's a lot to be improved and implemented. 
-I intend to put here on docs a complete todo list soon, but meanwhile I do this, check the [`app-store-scraper`](https://github.com/facundoolano/app-store-scraper) out to have a good reference and idea of what the module should offer. 
+I intend to put here on docs a complete todo list soon, but meanwhile I don't do this, check out the [`app-store-scraper`](https://github.com/facundoolano/app-store-scraper) to have a good reference and idea of what the module should offer. 
 
-Feel free to fork it, enhance and send us a PR.
+Feel free to fork it, enhance and send a PR.
