@@ -34,8 +34,33 @@ Example:
 ```elixir
 {:ok, app} = AppStore.App.get_details "com.midasplayer.apps.candycrushsaga"
 
-app["sellerName"] 
+app[0]["sellerName"] 
 #"King.com Limitied"
+```
+
+### Search
+
+Allow users to search throughout App Store.
+
+#### by_keyword
+
+Retrieves a list of apps searched by a given term. 
+
+Method Signature: `by_keyword(term, device, num, country)`
+Options:
+
+- `term`: a term to search for. Required.
+- `device`: a device to filter for. Defaults to `software`, which brings all devices. Other options are `iPadSoftware` and `macSoftware`.
+- `num`: the quantity of apps to be retrieved. Defaults to `50`. Max should be `250`, there's no validation so far, though. (`TODO`).
+- `country`: the two letter country code to get the list from. Defaults to `us`.  
+
+Example: 
+
+```elixir
+{:ok, apps} = AppStore.Search.by_keyword("deutschland", "software", 20, "de")
+
+apps
+#[ {...}, {...} ]  a list of apps. 
 ```
 
 ## Contributing

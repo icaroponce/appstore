@@ -1,2 +1,2 @@
-defmodule Appstore do
+defmodule AppStore do
 end
