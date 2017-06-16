@@ -23,4 +23,6 @@ defmodule AppStore.Common do
       :error -> :error
     end
   end
+
+  defdelegate clean_app(app), to: AppStore.Struct_parser
 end
