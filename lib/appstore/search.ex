@@ -1,4 +1,6 @@
 defmodule AppStore.Search do
+  import AppStore.Common
+
   @base_url "https://itunes.apple.com/search"
 
   def by_keyword(term, device \\ "software", num \\ 50, country \\ 'us') do
@@ -7,7 +9,12 @@ defmodule AppStore.Search do
     end
 
     url = "#{@base_url}?media=software&entity=#{device}&term=#{term}&limit=#{num}&country=#{country}"
-    search = Task.async(fn -> AppStore.Common.request(url) end)    
-    Task.await(search)
+    search = Task.async(fn -> request(url) end)    
+    search_list = Task.await search
+    case search_list do
+      {:ok, data} -> {:ok, data |> Enum.map(&clean_app/1) }
+      {:error, msg} -> {:error, msg}
+      :error -> :error
+    end
   end
 end
