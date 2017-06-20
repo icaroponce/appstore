@@ -9,7 +9,7 @@ First, add `appstore` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:appstore, "~> 0.1.0"}]
+  [{:appstore, "~> 0.2.0"}]
 end
 ```
 and run `$ mix deps.get`
@@ -34,7 +34,7 @@ Example:
 ```elixir
 {:ok, app} = AppStore.App.get_details "com.midasplayer.apps.candycrushsaga"
 
-app[0]["sellerName"] 
+app.sellerName 
 #"King.com Limitied"
 ```
 
