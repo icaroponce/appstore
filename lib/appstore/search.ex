@@ -10,7 +10,7 @@ defmodule AppStore.Search do
 
     url = "#{@base_url}?media=software&entity=#{device}&term=#{term}&limit=#{num}&country=#{country}"
     search = Task.async(fn -> request(url) end)    
-    search_list = Task.await search
+    search_list = Task.await search, 10000
     case search_list do
       {:ok, data} -> {:ok, data |> Enum.map(&clean_app/1) }
       {:error, msg} -> {:error, msg}

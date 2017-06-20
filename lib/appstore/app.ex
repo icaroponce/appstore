@@ -6,7 +6,7 @@ defmodule AppStore.App do
   def get_details(bundleId, country \\ "us") do
     url = "#{@base_url}?bundleId=#{bundleId}&country=#{country}"  
     app = Task.async(fn -> request(url) end)
-    fetched_app = Task.await app 
+    fetched_app = Task.await app, 10000
     case fetched_app do
       {:ok, data} -> {:ok, clean_app(List.first(data))}
       {:error, msg} -> {:error, msg}

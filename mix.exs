@@ -1,4 +1,4 @@
-defmodule Appstore.Mixfile do
+defmodule AppStore.Mixfile do
   use Mix.Project
 
   def project do
